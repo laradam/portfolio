@@ -292,13 +292,40 @@
     .filtro:hover { background: var(--ceu-claro); }
     .filtro[aria-pressed="true"] { background: var(--limao); box-shadow: var(--sombra-p); transform: translate(-2px, -2px); }
     .galeria { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 24px; }
-    .trabalho { margin: 0; background: var(--branco); border: var(--borda); border-radius: var(--raio); box-shadow: var(--sombra-p); padding: 10px 10px 16px; }
+    .galeria { grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); }
+    .trabalho {
+      display: flex; flex-direction: column; text-decoration: none; background: var(--branco); border: var(--borda);
+      border-radius: var(--raio); box-shadow: var(--sombra-p); padding: 10px 10px 16px;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .trabalho:hover { transform: translate(-3px, -3px); box-shadow: var(--sombra); }
+    .trabalho:hover .play { transform: scale(1.08); }
+    .trabalho-midia { position: relative; display: block; background: var(--tinta); }
+    .trabalho-midia .midia { position: absolute; inset: 0; }
+    .play-p { width: 52px; height: 52px; }
+    .play-p::before { border-width: 9px 0 9px 15px; margin-left: 4px; }
+    .trabalho-texto { display: block; padding: 12px 4px 0; }
+    .filtro-total { display: inline-block; min-width: 1.6em; margin-left: 4px; padding: 0 6px; border-radius: 999px; background: var(--tinta); color: var(--limao); font-size: .78rem; line-height: 1.6; text-align: center; }
+    .galeria-rodape { margin-top: 36px; text-align: center; }
+    .galeria-rodape .btn[hidden] { display: none; }
+
+    /* Player de vídeo */
+    .player {
+      padding: 0; border: var(--borda); border-radius: var(--raio); background: var(--creme); color: var(--tinta);
+      box-shadow: var(--sombra-g); width: min(420px, 92vw, calc((100vh - 150px) * 9 / 16 + 6px)); max-width: none; overflow: hidden;
+    }
+    .player::backdrop { background: rgba(19, 35, 15, .78); }
+    .player-topo { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 12px 10px 18px; border-bottom: var(--borda); background: var(--limao); }
+    .player-titulo { font-family: var(--fonte-titulo); text-transform: uppercase; font-size: 1rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .player-fechar { flex: none; width: 40px; height: 40px; border: var(--borda); border-radius: 12px; background: var(--creme); font-size: 1.1rem; font-weight: 700; cursor: pointer; }
+    .player-video { aspect-ratio: 9 / 16; background: #000; }
+    .player-video iframe { width: 100%; height: 100%; border: 0; display: block; }
+    .player-link { display: block; padding: 12px 18px; font-weight: 700; text-align: center; }
     .trabalho[hidden] { display: none; }
     .trabalho.surgir { animation: surgir .45s ease both; }
     @keyframes surgir { from { opacity: 0; transform: translateY(14px) scale(.98); } to { opacity: 1; transform: none; } }
-    .trabalho-midia { aspect-ratio: 4 / 5; border: 2px solid var(--tinta); border-radius: 12px; overflow: hidden; }
-    .trabalho figcaption { padding: 14px 6px 0; }
-    .trabalho-categoria { display: inline-block; font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; background: var(--ceu-claro); border: 1.5px solid var(--tinta); border-radius: 999px; padding: 2px 10px; }
+    .trabalho-midia { aspect-ratio: 9 / 16; border: 2px solid var(--tinta); border-radius: 12px; overflow: hidden; }
+        .trabalho-categoria { display: inline-block; font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; background: var(--ceu-claro); border: 1.5px solid var(--tinta); border-radius: 999px; padding: 2px 10px; }
     .trabalho-titulo { display: block; margin-top: 8px; font-weight: 700; line-height: 1.35; }
     .trabalho-formato { display: block; font-size: .92rem; color: var(--tinta-suave); }
 
@@ -441,11 +468,16 @@
       .depoimentos .depoimento:last-child, .resultados .resultado:last-child { grid-column: auto; }
       .galeria { grid-template-columns: repeat(2, 1fr); gap: 14px; }
       .trabalho { padding: 7px 7px 12px; }
-      .trabalho figcaption { padding: 10px 4px 0; }
+      .trabalho-texto { padding: 10px 2px 0; }
+      .play-p { width: 42px; height: 42px; }
       .trabalho-titulo { font-size: .95rem; }
       .trabalho-formato { font-size: .85rem; }
-      .filtros { gap: 8px; }
-      .filtro { padding: 9px 16px; }
+      .filtros {
+        gap: 8px; flex-wrap: nowrap; overflow-x: auto; margin-inline: -20px; padding: 4px 20px 10px;
+        scroll-snap-type: x proximity; scrollbar-width: none;
+      }
+      .filtros::-webkit-scrollbar { display: none; }
+      .filtro { padding: 9px 16px; flex: none; scroll-snap-align: start; white-space: nowrap; }
       .faixa-rotulo { display: none; }
       .contato-diretos { max-width: none; }
       .contato::before { width: 180px; right: -80px; top: -80px; }
@@ -560,6 +592,7 @@
         <div class="filtros reveal" id="filtros" role="group" aria-label="Filtrar trabalhos por nicho"></div>
         <p class="visualmente-oculto" id="galeria-status" aria-live="polite"></p>
         <div class="galeria" id="galeria"></div>
+        <div class="galeria-rodape"><button type="button" class="btn btn-limao" id="galeria-mais" hidden></button></div>
       </div>
     </section>
 
@@ -634,6 +667,16 @@
     </section>
   </main>
 
+  <!-- Janela que toca o vídeo sem sair do site -->
+  <dialog class="player" id="player" aria-labelledby="player-titulo">
+    <div class="player-topo">
+      <p class="player-titulo" id="player-titulo"></p>
+      <button type="button" class="player-fechar" id="player-fechar" aria-label="Fechar vídeo">✕</button>
+    </div>
+    <div class="player-video" id="player-video"></div>
+    <a class="player-link" id="player-link" href="#" target="_blank" rel="noopener noreferrer">Abrir no YouTube ↗</a>
+  </dialog>
+
   <!-- ========== 8. RODAPÉ ========== -->
   <footer class="rodape">
     <div class="container">
@@ -698,16 +741,16 @@
       adesivos: ['gravado com luz natural ☀', 'entrega em até 5 dias'],
       // Os três números curtos da capa
       numeros: [
-        { valor: '+180', rotulo: 'vídeos entregues' },
-        { valor: '+45', rotulo: 'marcas atendidas' },
-        { valor: '+12M', rotulo: 'views somadas' }
+        { valor: '+69', rotulo: 'vídeos no portfólio' },
+        { valor: '+43', rotulo: 'marcas atendidas' },
+        { valor: '+130M', rotulo: 'views somadas' }
       ]
     },
 
     // EDITE AQUI: as marcas com quem você já trabalhou (faixa que passa no fim da capa)
     marcas: {
       rotulo: 'já criei para',
-      lista: ['Pura Pele', 'Casa Leve', 'Sabor da Vila', 'Ateliê Brisa', 'Movi Fit', 'Grão Bom', 'Lar Doce Lar', 'Flor de Sal']
+      lista: ['InfinitePay', 'Méliuz', "L'Oréal", 'Airbnb', 'Logitech', 'Decolar', 'BV Financeiro', 'Reclame Aqui', 'Inglot', 'Copacol', 'Rap10', 'Pharmapele', 'Midas Time', 'Rituaria', 'Mez Móveis', 'Coala', 'Gamma', 'Quintal']
     },
 
     // EDITE AQUI: a seção Sobre mim
@@ -733,29 +776,30 @@
 
     // EDITE AQUI: seus três melhores conteúdos
     // link:  onde entra o link do vídeo (Instagram, TikTok, YouTube, Drive...)
-    // capa:  onde entra a capa vertical 9:16 do vídeo (troque imagem: '')
+    // capa:  onde entra a capa vertical 9:16 do vídeo. Com link do YouTube e imagem: ''
+    //        a capa é puxada sozinha do vídeo. Para usar outra, coloque o caminho em imagem.
     destaques: {
       manuscrito: 'os queridinhos',
       titulo: 'Conteúdos de destaque',
       subtitulo: 'Três vídeos que mostram o que acontece quando conteúdo verdadeiro encontra a estratégia certa.',
       itens: [
         {
-          link: 'https://instagram.com/seuusuario',
-          capa: { gradiente: 'g-limao', imagem: '', alt: 'Capa do vídeo de rotina de skincare' },
-          formato: 'Reels',
-          numero: '+2,4M',
-          rotulo: 'views no reels',
-          titulo: 'Rotina de skincare em 30 segundos',
-          contexto: 'Pura Pele: vídeo orgânico que virou o anúncio mais barato da campanha.'
+          link: 'https://youtube.com/shorts/5wf8Fv2CTa4',
+          capa: { gradiente: 'g-limao', imagem: '', alt: 'Capa do vídeo para a InfinitePay' },
+          formato: 'Finanças',
+          numero: '+100M',
+          rotulo: 'de views',
+          titulo: 'InfinitePay',
+          contexto: 'O vídeo que passou de 100 milhões de visualizações.'
         },
         {
-          link: 'https://instagram.com/seuusuario',
-          capa: { gradiente: 'g-mar', imagem: '', alt: 'Capa do vídeo de unboxing da air fryer' },
-          formato: 'Unboxing',
-          numero: '+38%',
-          rotulo: 'de vendas na semana',
-          titulo: 'O unboxing que conquistou a cozinha',
-          contexto: 'Casa Leve: três aberturas diferentes testadas no tráfego pago.'
+          link: 'https://youtube.com/shorts/wesTfq67X9o',
+          capa: { gradiente: 'g-mar', imagem: '', alt: 'Capa do vídeo para o Méliuz' },
+          formato: 'Finanças',
+          numero: '+30M',
+          rotulo: 'de views',
+          titulo: 'Méliuz',
+          contexto: 'Mais de 30 milhões de visualizações para o app de cashback.'
         },
         {
           link: 'https://instagram.com/seuusuario',
@@ -769,25 +813,134 @@
       ]
     },
 
-    // EDITE AQUI: a galeria de trabalhos por nicho
-    // categoria precisa ser igual (mesma escrita) a um dos nomes em categorias
+    // EDITE AQUI: seus vídeos separados por nicho
+    // Para adicionar um vídeo, copie uma linha { marca, detalhe, link } e troque os dados.
+    // marca:   nome da marca (aparece em destaque no card)
+    // detalhe: texto curto embaixo da marca (pode deixar '' vazio)
+    // link:    link do vídeo no YouTube. A capa do card é puxada sozinha do vídeo.
+    // Para criar um nicho novo, copie um bloco { nome, videos: [...] } inteiro.
     trabalhos: {
       manuscrito: 'um pouco de tudo',
       titulo: 'Trabalhos por nicho',
-      subtitulo: 'Escolha o seu segmento e veja como eu falo com o público da sua marca.',
+      subtitulo: 'Escolha o seu segmento e veja como eu falo com o público da sua marca. Clique em qualquer vídeo para assistir aqui mesmo.',
       textoTodos: 'Todos',
-      categorias: ['Beleza', 'Casa', 'Comida', 'Moda', 'Fitness'],
-      itens: [
-        { titulo: 'Sérum antes e depois', categoria: 'Beleza', formato: 'Vídeo UGC de 30 segundos', gradiente: 'g-limao', imagem: '', alt: 'Frasco de sérum sobre uma pia clara' },
-        { titulo: 'Maquiagem de 5 minutos', categoria: 'Beleza', formato: 'Reels com tutorial', gradiente: 'g-creme', imagem: '', alt: 'Criadora aplicando base no rosto' },
-        { titulo: 'Organização da despensa', categoria: 'Casa', formato: 'Antes e depois', gradiente: 'g-ceu', imagem: '', alt: 'Potes organizados em uma prateleira' },
-        { titulo: 'Aromatizador que virou rotina', categoria: 'Casa', formato: 'Unboxing', gradiente: 'g-brisa', imagem: '', alt: 'Aromatizador de ambiente em uma mesa de cabeceira' },
-        { titulo: 'Café da manhã em 3 passos', categoria: 'Comida', formato: 'Receita rápida', gradiente: 'g-sol', imagem: '', alt: 'Mesa de café da manhã com frutas e granola' },
-        { titulo: 'Granola nova na mesa', categoria: 'Comida', formato: 'Fotos de produto', gradiente: 'g-verde', imagem: '', alt: 'Pote de granola com iogurte' },
-        { titulo: 'Look de verão com 3 peças', categoria: 'Moda', formato: 'Corte para anúncio', gradiente: 'g-pomar', imagem: '', alt: 'Criadora vestindo um look leve de verão' },
-        { titulo: 'Bolsa que vai com tudo', categoria: 'Moda', formato: 'Vídeo UGC de 15 segundos', gradiente: 'g-creme', imagem: '', alt: 'Bolsa de palha sobre um banco' },
-        { titulo: 'Treino de 15 minutos em casa', categoria: 'Fitness', formato: 'Publicação no perfil', gradiente: 'g-mar', imagem: '', alt: 'Criadora se alongando em um tapete de yoga' },
-        { titulo: 'Garrafinha do treino', categoria: 'Fitness', formato: 'Unboxing', gradiente: 'g-limao', imagem: '', alt: 'Garrafa térmica ao lado de um par de tênis' }
+      porPagina: 12, // quantos vídeos aparecem antes do botão "Ver mais vídeos"
+      textoMais: 'Ver mais vídeos',
+      nichos: [
+        {
+          nome: "Beleza",
+          videos: [
+            { marca: "Noma", detalhe: "", link: 'https://youtube.com/shorts/TbRE2_mezCg' },
+            { marca: "L'Oréal", detalhe: "Skincare noturno", link: 'https://youtube.com/shorts/6kvtFKsPQPw' },
+            { marca: "Inglot", detalhe: "", link: 'https://youtube.com/shorts/0g1pFDhxi-4' },
+            { marca: "Rituaria", detalhe: "", link: 'https://youtube.com/shorts/Yt_UjtmiMgg' },
+            { marca: "Rituaria", detalhe: "", link: 'https://youtube.com/shorts/CzO13_qS6Fs' },
+            { marca: "Musquee", detalhe: "", link: 'https://youtube.com/shorts/ctKWcVRF35k' },
+            { marca: "Quintal", detalhe: "", link: 'https://youtube.com/shorts/U_T_I-vcM7k' },
+            { marca: "Quintal", detalhe: "", link: 'https://youtube.com/shorts/aTe89tMdv28' },
+            { marca: "Quintal", detalhe: "", link: 'https://youtube.com/shorts/UCgbmlmT618' },
+            { marca: "Amobeleza", detalhe: "", link: 'https://youtube.com/shorts/V5gvw_l08go' },
+            { marca: "Belleton", detalhe: "", link: 'https://youtube.com/shorts/_d2dByXfvIw' },
+            { marca: "Rarissima", detalhe: "", link: 'https://youtube.com/shorts/dj9LD5x8MWI' },
+            { marca: "Box Magenta", detalhe: "", link: 'https://youtube.com/shorts/XwhHAl2LJ6k' },
+            { marca: "Box Magenta", detalhe: "", link: 'https://youtube.com/shorts/cDRldAKYyKU' },
+            { marca: "Cand Óculos", detalhe: "", link: 'https://youtube.com/shorts/JPz1wMt_R4I' },
+            { marca: "Bem Me Fiz", detalhe: "", link: 'https://youtube.com/shorts/P3UrVHbwI9g' },
+            { marca: "Botox", detalhe: "", link: 'https://youtube.com/shorts/YOmm3Zi87PE' }
+          ]
+        },
+        {
+          nome: "Casa & Deco",
+          videos: [
+            { marca: "Coza", detalhe: "", link: 'https://youtube.com/shorts/nbq1HzdlPJE' },
+            { marca: "DT3", detalhe: "", link: 'https://youtube.com/shorts/Imt3HZDlCXU' },
+            { marca: "DT3", detalhe: "", link: 'https://youtube.com/shorts/JwblS_1IReM' },
+            { marca: "DT3", detalhe: "", link: 'https://youtube.com/shorts/RPNeR2ANyrM' },
+            { marca: "Coza", detalhe: "", link: 'https://youtube.com/shorts/1Fm5v3bSdKM' },
+            { marca: "Coala", detalhe: "", link: 'https://youtube.com/shorts/plSEfBiygVw' },
+            { marca: "Coala", detalhe: "", link: 'https://youtube.com/shorts/tClA-xjxP68' },
+            { marca: "Mez Móveis", detalhe: "", link: 'https://youtube.com/shorts/R-y96AP_NLo' },
+            { marca: "Mez Móveis", detalhe: "", link: 'https://youtube.com/shorts/mEc4A2oJ0_w' },
+            { marca: "Vinagreen", detalhe: "", link: 'https://youtube.com/shorts/8T_dTUk5oX4' },
+            { marca: "Offertus", detalhe: "", link: 'https://youtube.com/shorts/ucf6vv64SNY' },
+            { marca: "Velds", detalhe: "", link: 'https://youtube.com/shorts/TZK3XeajRyI' },
+            { marca: "Velds", detalhe: "", link: 'https://youtube.com/shorts/i9dHLO0VlFk' },
+            { marca: "Lumai", detalhe: "", link: 'https://youtube.com/shorts/2y9Xe6Q5eMc' },
+            { marca: "Lumai", detalhe: "", link: 'https://youtube.com/shorts/0Mkvi_n-bFU' }
+          ]
+        },
+        {
+          nome: "Gastronomia",
+          videos: [
+            { marca: "Ateliê", detalhe: "", link: 'https://youtube.com/shorts/0FhBNV71z9A' },
+            { marca: "Ateliê", detalhe: "", link: 'https://youtube.com/shorts/XmjA7cpCPfQ' },
+            { marca: "Rap10", detalhe: "", link: 'https://youtube.com/shorts/orhbzi_XYiA' },
+            { marca: "Rap10", detalhe: "", link: 'https://youtube.com/shorts/It7GiFzsOe0' },
+            { marca: "Copacol", detalhe: "", link: 'https://youtube.com/shorts/Kq93tU1dYuA' }
+          ]
+        },
+        {
+          nome: "Drinks e Sobremesas",
+          videos: [
+            { marca: "Tropical", detalhe: "", link: 'https://youtube.com/shorts/QgCK-EJKTm0' },
+            { marca: "Cafeza", detalhe: "", link: 'https://youtube.com/shorts/R-PC_tGXdFk' },
+            { marca: "Tropical", detalhe: "", link: 'https://youtube.com/shorts/bUf0ItCQdUU' },
+            { marca: "Tropical", detalhe: "", link: 'https://youtube.com/shorts/vFmYLAliwIk' },
+            { marca: "Smoo Sorvete", detalhe: "", link: 'https://youtube.com/shorts/AXzcHi_Qq_Y' }
+          ]
+        },
+        {
+          nome: "Saúde & Fitness",
+          videos: [
+            { marca: "Squadz", detalhe: "", link: 'https://youtube.com/shorts/vbQW-1VEjPk' },
+            { marca: "Pharmapele", detalhe: "Creatina", link: 'https://youtube.com/shorts/_6sCm4K8DRE' },
+            { marca: "Pharmapele", detalhe: "", link: 'https://youtube.com/shorts/Eul1uuQhU7g' },
+            { marca: "Pharmapele", detalhe: "Emagrecimento", link: 'https://youtube.com/shorts/K31BzOy3qt0' },
+            { marca: "Voy", detalhe: "Emagrecimento", link: 'https://youtube.com/shorts/ZVNvzvdz4Ow' }
+          ]
+        },
+        {
+          nome: "Finanças",
+          videos: [
+            { marca: "InfinitePay", detalhe: "100M de views", link: 'https://youtube.com/shorts/5wf8Fv2CTa4' },
+            { marca: "Méliuz", detalhe: "30M de views", link: 'https://youtube.com/shorts/wesTfq67X9o' },
+            { marca: "Méliuz", detalhe: "App", link: 'https://youtube.com/shorts/GPcPWfWmA3A' },
+            { marca: "BV Financeiro", detalhe: "", link: 'https://youtube.com/shorts/2NMavMHi4jM' },
+            { marca: "BV Financeiro", detalhe: "", link: 'https://youtube.com/shorts/Q_n4uwkxiDo' }
+          ]
+        },
+        {
+          nome: "Tech & Apps",
+          videos: [
+            { marca: "Vero", detalhe: "", link: 'https://youtube.com/shorts/8QRM5LPK5M8' },
+            { marca: "Focus", detalhe: "", link: 'https://youtube.com/shorts/GvLjL_Ru19U' },
+            { marca: "Logitech", detalhe: "", link: 'https://youtube.com/shorts/sspAuh3TFqw' },
+            { marca: "Logitech", detalhe: "", link: 'https://youtube.com/shorts/xyaWdRi9pK4' },
+            { marca: "Reclame Aqui", detalhe: "", link: 'https://youtube.com/shorts/DxiroerLBGw' },
+            { marca: "Gamma", detalhe: "", link: 'https://youtube.com/shorts/nZQoMA114MA' }
+          ]
+        },
+        {
+          nome: "Moda",
+          videos: [
+            { marca: "Lust", detalhe: "Outfit do dia", link: 'https://youtube.com/shorts/nV1oWxv_J_4' },
+            { marca: "Midas Time", detalhe: "", link: 'https://youtube.com/shorts/wZgUdGFouNA' },
+            { marca: "Midas Time", detalhe: "", link: 'https://youtube.com/shorts/t2aysMm2INg' },
+            { marca: "Midas Time", detalhe: "", link: 'https://youtube.com/shorts/QE-bUfK8z14' },
+            { marca: "Rarissima", detalhe: "", link: 'https://youtube.com/shorts/_YF_bwGgC0Y' },
+            { marca: "Rarissima", detalhe: "", link: 'https://youtube.com/shorts/Nhq12rZkpa8' }
+          ]
+        },
+        {
+          nome: "Viagem",
+          videos: [
+            { marca: "OKA House", detalhe: "", link: 'https://youtube.com/shorts/7TzuVW8847A' },
+            { marca: "OKA House", detalhe: "", link: 'https://youtube.com/shorts/DzIWctdbjgg' },
+            { marca: "Airbnb", detalhe: "", link: 'https://youtube.com/shorts/s5iwpfzgxbI' },
+            { marca: "Airbnb", detalhe: "", link: 'https://youtube.com/shorts/wUxGOQ3QwFw' },
+            { marca: "App Decolar", detalhe: "", link: 'https://youtube.com/shorts/Y8nN7CMb73U' }
+          ]
+        }
       ]
     },
 
@@ -816,7 +969,7 @@
         { valor: 4.9, decimais: 1, prefixo: '', sufixo: '/5', rotulo: 'nota média dada pelas marcas' },
         { valor: 87, decimais: 0, prefixo: '', sufixo: '%', rotulo: 'das marcas me contratam de novo' },
         { valor: 5, decimais: 0, prefixo: '', sufixo: ' dias', rotulo: 'de prazo médio de entrega' },
-        { valor: 3.1, decimais: 1, prefixo: '', sufixo: 'M', rotulo: 'de alcance no maior vídeo' }
+        { valor: 100, decimais: 0, prefixo: '+', sufixo: 'M', rotulo: 'de views no maior vídeo' }
       ],
       resultadosTitulo: 'Resultados de campanha',
       resultadosManuscrito: 'na prática',
@@ -873,7 +1026,13 @@
   const texto = (id, valor) => { const el = $(id); if (el) el.textContent = valor; };
 
   // Cria uma foto real (se houver imagem) ou o bloco em gradiente
-  function midia(m) {
+  function idYoutube(link) {
+    const r = String(link || '').match(/(?:shorts\/|v=|youtu\.be\/|embed\/)([\w-]{11})/);
+    return r ? r[1] : '';
+  }
+  function midia(m, link) {
+    const id = idYoutube(link);
+    if (!m.imagem && id) return `<img class="midia" src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt="${esc(m.alt)}" loading="lazy">`;
     if (m.imagem) return `<img class="midia" src="${esc(m.imagem)}" alt="${esc(m.alt)}" loading="lazy">`;
     return `<div class="midia ${esc(m.gradiente || 'g-limao')}" role="img" aria-label="${esc(m.alt)}"></div>`;
   }
@@ -931,9 +1090,9 @@
     texto('destaques-titulo', c.destaques.titulo);
     texto('destaques-subtitulo', c.destaques.subtitulo);
     $('destaques-grade').innerHTML = c.destaques.itens.map((d, i) => `
-      <a class="destaque-card reveal" style="--atraso:${i * 0.12}s" href="${esc(d.link)}" target="_blank" rel="noopener noreferrer">
+      <a class="destaque-card reveal" style="--atraso:${i * 0.12}s" href="${esc(d.link)}" target="_blank" rel="noopener noreferrer" data-video="${esc(d.link)}" data-titulo="${esc(d.titulo)}">
         <div class="destaque-capa">
-          ${midia(d.capa)}
+          ${midia(d.capa, d.link)}
           <span class="destaque-formato">${esc(d.formato)}</span>
           <span class="play" aria-hidden="true"></span>
         </div>
@@ -941,26 +1100,31 @@
         <p class="destaque-rotulo">${esc(d.rotulo)}</p>
         <h3 class="destaque-titulo">${esc(d.titulo)}</h3>
         <p class="destaque-contexto">${esc(d.contexto)}</p>
-        <span class="destaque-ver">Assistir ao vídeo <span class="visualmente-oculto">(abre em nova aba)</span> →</span>
+        <span class="destaque-ver">Assistir ao vídeo →</span>
       </a>`).join('');
 
     // Trabalhos
     texto('trabalhos-manuscrito', c.trabalhos.manuscrito);
     texto('trabalhos-titulo', c.trabalhos.titulo);
     texto('trabalhos-subtitulo', c.trabalhos.subtitulo);
-    const filtros = [{ nome: c.trabalhos.textoTodos, valor: 'todos' }]
-      .concat(c.trabalhos.categorias.map((cat) => ({ nome: cat, valor: cat })));
+    const todosVideos = c.trabalhos.nichos.flatMap((n) => n.videos.map((v) => ({ ...v, nicho: n.nome })));
+    const filtros = [{ nome: c.trabalhos.textoTodos, valor: 'todos', total: todosVideos.length }]
+      .concat(c.trabalhos.nichos.map((n) => ({ nome: n.nome, valor: n.nome, total: n.videos.length })));
     $('filtros').innerHTML = filtros.map((f, i) =>
-      `<button type="button" class="filtro" data-filtro="${esc(f.valor)}" aria-pressed="${i === 0}">${esc(f.nome)}</button>`).join('');
-    $('galeria').innerHTML = c.trabalhos.itens.map((t, i) => `
-      <figure class="trabalho reveal" style="--atraso:${(i % 4) * 0.08}s" data-categoria="${esc(t.categoria)}">
-        <div class="trabalho-midia">${midia(t)}</div>
-        <figcaption>
-          <span class="trabalho-categoria">${esc(t.categoria)}</span>
-          <span class="trabalho-titulo">${esc(t.titulo)}</span>
-          <span class="trabalho-formato">${esc(t.formato)}</span>
-        </figcaption>
-      </figure>`).join('');
+      `<button type="button" class="filtro" data-filtro="${esc(f.valor)}" aria-pressed="${i === 0}">${esc(f.nome)} <span class="filtro-total">${f.total}</span></button>`).join('');
+    $('galeria').innerHTML = todosVideos.map((v) => `
+      <a class="trabalho" href="${esc(v.link)}" target="_blank" rel="noopener noreferrer" data-categoria="${esc(v.nicho)}" data-video="${esc(v.link)}" data-titulo="${esc(v.marca)}">
+        <span class="trabalho-midia">
+          ${midia({ gradiente: 'g-limao', imagem: '', alt: '' }, v.link)}
+          <span class="play play-p" aria-hidden="true"></span>
+        </span>
+        <span class="trabalho-texto">
+          <span class="trabalho-categoria">${esc(v.nicho)}</span>
+          <span class="trabalho-titulo">${esc(v.marca)}</span>
+          <span class="trabalho-formato">${esc(v.detalhe || 'Assistir ao vídeo')}</span>
+        </span>
+      </a>`).join('');
+    texto('galeria-mais', c.trabalhos.textoMais);
 
     // Serviços
     texto('servicos-manuscrito', c.servicos.manuscrito);
@@ -1049,27 +1213,70 @@
     window.addEventListener('resize', () => { if (window.innerWidth > 900) alternar(false); });
   }
 
-  // Filtros da galeria
+  // Filtros da galeria e botão "Ver mais vídeos"
   function iniciarFiltros() {
     const botoes = document.querySelectorAll('.filtro');
-    const itens = document.querySelectorAll('.trabalho');
-    botoes.forEach((b) => b.addEventListener('click', () => {
-      const filtro = b.dataset.filtro;
-      botoes.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
-      let visiveis = 0;
-      itens.forEach((item) => {
-        const mostrar = filtro === 'todos' || item.dataset.categoria === filtro;
-        item.hidden = !mostrar;
-        item.classList.remove('surgir');
-        if (mostrar) {
-          visiveis++;
-          item.classList.add('visivel');
-          void item.offsetWidth; // reinicia a animação
-          item.classList.add('surgir');
-        }
+    const itens = [...document.querySelectorAll('.trabalho')];
+    const botaoMais = $('galeria-mais');
+    const porPagina = CONFIG.trabalhos.porPagina || 12;
+    let filtro = 'todos';
+    let limite = porPagina;
+
+    const mostrar = (animar) => {
+      const doFiltro = itens.filter((item) => filtro === 'todos' || item.dataset.categoria === filtro);
+      itens.forEach((item) => { item.hidden = true; item.classList.remove('surgir'); });
+      doFiltro.forEach((item, i) => {
+        if (i >= limite) return;
+        item.hidden = false;
+        if (animar) { void item.offsetWidth; item.classList.add('surgir'); }
       });
-      texto('galeria-status', `${visiveis} trabalhos exibidos em ${b.textContent}.`);
+      const faltam = doFiltro.length - limite;
+      botaoMais.hidden = faltam <= 0;
+      botaoMais.textContent = `${CONFIG.trabalhos.textoMais} (${faltam})`;
+      return doFiltro.length;
+    };
+
+    botoes.forEach((b) => b.addEventListener('click', () => {
+      filtro = b.dataset.filtro;
+      limite = porPagina;
+      botoes.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      const total = mostrar(true);
+      texto('galeria-status', `${total} vídeos em ${b.firstChild.textContent.trim()}.`);
     }));
+    botaoMais.addEventListener('click', () => {
+      const primeiroNovo = limite;
+      limite += porPagina;
+      mostrar(false);
+      const visiveis = itens.filter((item) => !item.hidden);
+      visiveis.slice(primeiroNovo).forEach((item) => { void item.offsetWidth; item.classList.add('surgir'); });
+      if (visiveis[primeiroNovo]) visiveis[primeiroNovo].focus({ preventScroll: true });
+    });
+    mostrar(false);
+  }
+
+  // Player de vídeo dentro do site
+  function iniciarPlayer() {
+    const dialogo = $('player');
+    const moldura = $('player-video');
+    const linkFora = $('player-link');
+    if (!dialogo || typeof dialogo.showModal !== 'function') return; // navegador antigo: o link abre no YouTube
+    let origem = null;
+    const fechar = () => dialogo.close();
+    dialogo.addEventListener('close', () => { moldura.innerHTML = ''; if (origem) origem.focus(); });
+    dialogo.addEventListener('click', (e) => { if (e.target === dialogo) fechar(); });
+    $('player-fechar').addEventListener('click', fechar);
+    document.addEventListener('click', (e) => {
+      const card = e.target.closest('[data-video]');
+      if (!card || e.ctrlKey || e.metaKey || e.shiftKey) return;
+      const id = idYoutube(card.dataset.video);
+      if (!id) return;
+      e.preventDefault();
+      origem = card;
+      texto('player-titulo', card.dataset.titulo || 'Vídeo');
+      linkFora.href = card.dataset.video;
+      moldura.innerHTML = `<iframe src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0&playsinline=1" title="Vídeo: ${esc(card.dataset.titulo || '')}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
+      dialogo.showModal();
+    });
   }
 
   // Animação de entrada e contadores
@@ -1173,6 +1380,7 @@
   montarSite();
   iniciarMenu();
   iniciarFiltros();
+  iniciarPlayer();
   iniciarAnimacoes();
   iniciarFormulario();
   ajustarTitulos();
