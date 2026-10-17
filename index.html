@@ -737,7 +737,8 @@
       botaoTrabalhos: 'Ver os trabalhos',
       rabisco: 'uau!',
       // Foto principal da capa (troque imagem: '' pelo caminho da sua foto)
-      foto: { gradiente: 'g-limao', imagem: '', alt: 'Foto de Lara Dam sorrindo e segurando um produto em frente à câmera' },
+      // posicao: qual parte da foto fica visível quando ela é cortada (horizontal vertical)
+      foto: { gradiente: 'g-limao', imagem: 'fotos/lara-capa.webp', posicao: '50% 72%', alt: 'Lara Dam sentada no chão de um estúdio claro, entre caixas de papelão, com um notebook à frente' },
       adesivos: ['gravado com luz natural ☀', 'entrega em até 5 dias'],
       // Os três números curtos da capa
       numeros: [
@@ -770,7 +771,7 @@
         'Arquivo original em alta qualidade, sem marca d\'água',
         'Uma rodada de ajustes inclusa e direitos de uso combinados'
       ],
-      foto: { gradiente: 'g-ceu', imagem: '', alt: 'Lara Dam gravando um vídeo com o celular apoiado em um tripé' },
+      foto: { gradiente: 'g-ceu', imagem: 'fotos/lara-sobre.webp', posicao: '50% 40%', alt: 'Retrato de Lara Dam sorrindo, com a mão apoiada no cabelo' },
       fotoMini: { gradiente: 'g-sol', imagem: '', alt: 'Detalhe de produtos organizados em uma mesa clara' }
     },
 
@@ -1033,7 +1034,8 @@
   function midia(m, link) {
     const id = idYoutube(link);
     if (!m.imagem && id) return `<img class="midia" src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt="${esc(m.alt)}" loading="lazy">`;
-    if (m.imagem) return `<img class="midia" src="${esc(m.imagem)}" alt="${esc(m.alt)}" loading="lazy">`;
+    const pos = m.posicao ? ` style="object-position:${esc(m.posicao)}"` : '';
+    if (m.imagem) return `<img class="midia" src="${esc(m.imagem)}" alt="${esc(m.alt)}"${pos} loading="lazy">`;
     return `<div class="midia ${esc(m.gradiente || 'g-limao')}" role="img" aria-label="${esc(m.alt)}"></div>`;
   }
 
