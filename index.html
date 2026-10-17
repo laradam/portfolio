@@ -384,7 +384,7 @@
     .player-link { display: block; padding: 14px 18px; font-weight: 600; text-align: center; color: var(--roxo-claro); }
     .player :focus-visible { outline-color: var(--roxo-claro); }
 
-    /* Capas do YouTube: a imagem vem com faixas pretas nas laterais.
+    /* Reserva: a capa pequena do YouTube vem com faixas pretas nas laterais.
        Ampliamos e centralizamos para mostrar só a parte vertical do vídeo. */
     img.midia.yt { inset: auto; left: 50%; top: 50%; width: 242%; height: auto; max-width: none; object-fit: fill; transform: translate(-50%, -50%); }
     .pilha-card img.midia.yt, .destaque-capa img.midia.yt, .trabalho-midia img.midia.yt { position: absolute; }
@@ -680,7 +680,10 @@
        alt:     descrição da foto para leitores de tela
      Se imagem ficar '' (vazio), aparece um bloco neutro no lugar.
 
-     VÍDEOS DO YOUTUBE: a capa de cada vídeo é puxada sozinha do link.
+     VÍDEOS DO YOUTUBE: a capa de cada vídeo fica na pasta fotos/capas,
+     com o código do vídeo no nome (por exemplo fotos/capas/5wf8Fv2CTa4.webp).
+     Para um vídeo novo, a capa vertical é puxada sozinha do YouTube.
+     Para usar uma capa sua, salve a imagem nessa pasta com o mesmo nome.
      ================================================================= */
   const CONFIG = {
 
@@ -1000,12 +1003,26 @@
     return r ? r[1] : '';
   }
 
+  // Capa de reserva: se a capa salva em fotos/capas não existir (vídeo novo),
+  // usa a capa vertical do YouTube e, em último caso, a capa pequena.
+  function capaReserva(img) {
+    const id = img.dataset.id;
+    if (!img.dataset.tentativa) {
+      img.dataset.tentativa = '1';
+      img.src = `https://i.ytimg.com/vi/${id}/oar2.jpg`;
+    } else if (img.dataset.tentativa === '1') {
+      img.dataset.tentativa = '2';
+      img.classList.add('yt');
+      img.src = `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+    }
+  }
+
   // Foto real, capa do vídeo do YouTube ou bloco neutro
   function midia(m, link) {
     const id = idYoutube(link);
     const pos = m.posicao ? ` style="object-position:${esc(m.posicao)}"` : '';
     if (m.imagem) return `<img class="midia" src="${esc(m.imagem)}" alt="${esc(m.alt || '')}"${pos} loading="lazy">`;
-    if (id) return `<img class="midia yt" src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt="${esc(m.alt || '')}" loading="lazy">`;
+    if (id) return `<img class="midia" src="fotos/capas/${id}.webp" data-id="${id}" alt="${esc(m.alt || '')}" loading="lazy" onerror="capaReserva(this)">`;
     return `<div class="midia g-padrao" role="img" aria-label="${esc(m.alt || '')}"></div>`;
   }
 
