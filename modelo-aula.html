@@ -5,33 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lara Dam | Portfólio UGC Creator</title>
   <meta name="description" content="Portfólio de Lara Dam, UGC creator de Caraguá, litoral de São Paulo. Vídeos curtos e verdadeiros que fazem marcas pararem a rolagem e venderem mais.">
-  <meta name="theme-color" content="#f3eee9">
+  <meta name="theme-color" content="#f6efe2">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@300;800;900&family=Fraunces:opsz,wght,SOFT@9..144,800,100&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     /* =========================================================
-       CORES E FONTES (direção: editorial creme e azul)
+       CORES E FONTES (direção: mídia kit vinho, creme e dourado,
+       com estrelas rabiscadas e lembrete de celular)
        Para mudar uma cor no site inteiro, troque só aqui.
        ========================================================= */
     :root {
-      --creme: #f3eee9;
-      --creme-2: #ebe3da;
-      --papel: #fbf8f4;
-      --tinta: #14110d;
-      --tinta-suave: #4b443c;
-      --azul: #0049a4;
-      --azul-escuro: #003a85;
-      --laranja: #df7900;
-      --linha: rgba(20, 17, 13, .14);
-      --sombra: 0 1px 2px rgba(20, 17, 13, .05), 0 12px 32px -14px rgba(20, 17, 13, .22);
-      --raio: 10px;
-      --raio-g: 16px;
-      --serif: "Fraunces", Georgia, "Times New Roman", serif;
-      --sans: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --creme: #f6efe2;
+      --creme-2: #efe3cd;
+      --papel: #fffaf1;
+      --vinho: #8f1b1e;
+      --vinho-escuro: #6c1215;
+      --vermelho: #c42f2a;
+      --ouro: #e8c262;
+      --ouro-claro: #f7e2a6;
+      --tinta: #24170f;
+      --tinta-suave: #5e4636;
+      --linha: rgba(36, 23, 15, .16);
+      --sombra: 0 2px 4px rgba(36, 23, 15, .06), 0 18px 40px -18px rgba(36, 23, 15, .35);
+      --raio: 12px;
+      --raio-g: 18px;
+      --titulo: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+      --logo: "Fraunces", Georgia, serif;
+      --sans: "Outfit", system-ui, -apple-system, "Segoe UI", sans-serif;
       --largura: 1200px;
-      --respiro: clamp(80px, 11vw, 150px);
+      --respiro: clamp(80px, 11vw, 140px);
+      /* Padrão adamascado do fundo vinho */
+      --damasco: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='84' viewBox='0 0 84 84'%3E%3Cg fill='none' stroke='%23000' stroke-opacity='.2' stroke-width='1.4'%3E%3Cpath d='M42 8c9 10 9 19 0 27-9-8-9-17 0-27zM42 49c9 10 9 19 0 27-9-8-9-17 0-27zM8 42c10-9 19-9 27 0-8 9-17 9-27 0zM49 42c10-9 19-9 27 0-8 9-17 9-27 0z'/%3E%3Ccircle cx='42' cy='42' r='5'/%3E%3Cpath d='M0 10a10 10 0 0 0 10-10M74 0a10 10 0 0 0 10 10M84 74a10 10 0 0 0-10 10M10 84A10 10 0 0 0 0 74'/%3E%3C/g%3E%3C/svg%3E");
     }
 
     *, *::before, *::after { box-sizing: border-box; }
@@ -42,6 +48,7 @@
       color: var(--tinta);
       font-family: var(--sans);
       font-size: 1.0625rem;
+      font-weight: 400;
       line-height: 1.65;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
@@ -49,12 +56,12 @@
     img { max-width: 100%; display: block; }
     a { color: inherit; }
     button, input, textarea { font: inherit; color: inherit; }
-    h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.05; margin: 0; letter-spacing: -.015em; font-variation-settings: "opsz" 120; }
-    h2 em, h1 em, h3 em { font-style: italic; color: var(--azul); font-weight: 350; }
+    h1, h2, h3 { font-family: var(--titulo); font-weight: 300; line-height: .95; margin: 0; text-transform: uppercase; letter-spacing: .005em; }
+    h1 em, h2 em, h3 em { font-style: normal; font-weight: 900; }
     p { margin: 0; }
+    strong, b { font-weight: 600; }
 
-    /* Foco visível para quem navega pelo teclado */
-    :focus-visible { outline: 2px solid var(--azul); outline-offset: 3px; border-radius: 4px; }
+    :focus-visible { outline: 2.5px solid var(--vermelho); outline-offset: 3px; border-radius: 4px; }
 
     .pular {
       position: absolute; left: 16px; top: -60px; z-index: 200;
@@ -64,29 +71,35 @@
     .pular:focus { top: 12px; }
 
     .container { width: min(var(--largura), 100% - 40px); margin-inline: auto; }
-    .secao { padding-block: var(--respiro); }
+    .secao { padding-block: var(--respiro); position: relative; }
+
+    /* Estrelas rabiscadas (desenho no topo do body) */
+    .estrela { position: absolute; width: 90px; height: 90px; pointer-events: none; z-index: 0; }
+    .estrela.preta { fill: var(--tinta); }
+    .estrela.vermelha { fill: var(--vermelho); }
+    .estrela.dourada { fill: var(--ouro); }
 
     /* Rótulo pequeno acima dos títulos */
     .rotulo {
-      display: inline-flex; align-items: center; gap: 12px;
-      font-size: .78rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
-      color: var(--tinta-suave); margin-bottom: 22px;
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: .8rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--vermelho); margin-bottom: 18px;
     }
-    .rotulo::before { content: ""; width: 28px; height: 2px; background: var(--laranja); }
-    .titulo-secao { font-size: clamp(2.3rem, 5.4vw, 4.4rem); max-width: 16ch; }
-    .sub { color: var(--tinta-suave); max-width: 52ch; margin-top: 20px; font-size: 1.08rem; }
-    .cabeca { display: flex; justify-content: space-between; align-items: end; gap: 32px; flex-wrap: wrap; margin-bottom: clamp(44px, 6vw, 72px); }
+    .rotulo::before { content: "★"; font-size: .95rem; letter-spacing: 0; }
+    .titulo-secao { font-size: clamp(2.8rem, 6.4vw, 5.4rem); max-width: 14ch; color: var(--vinho); }
+    .sub { color: var(--tinta-suave); max-width: 50ch; margin-top: 20px; font-size: 1.08rem; }
+    .cabeca { display: flex; justify-content: space-between; align-items: end; gap: 32px; flex-wrap: wrap; margin-bottom: clamp(40px, 6vw, 68px); position: relative; z-index: 1; }
 
     /* Botões */
     .btn {
       display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-      padding: 15px 26px; border-radius: 999px; border: 1px solid transparent;
-      font-weight: 600; font-size: .98rem; text-decoration: none; cursor: pointer;
-      transition: background .25s, color .25s, border-color .25s, transform .25s;
+      padding: 15px 28px; border-radius: 999px; border: 1.5px solid transparent;
+      font-weight: 600; font-size: .98rem; letter-spacing: .02em; text-decoration: none; cursor: pointer;
+      transition: background .25s, color .25s, border-color .25s, transform .25s, box-shadow .25s;
     }
     .btn:hover { transform: translateY(-2px); }
-    .btn-azul { background: var(--azul); color: #fff; }
-    .btn-azul:hover { background: var(--azul-escuro); }
+    .btn-azul { background: var(--vermelho); color: #fff; box-shadow: 0 10px 24px -12px rgba(196, 47, 42, .7); }
+    .btn-azul:hover { background: var(--vinho); }
     .btn-linha { border-color: var(--tinta); color: var(--tinta); background: transparent; }
     .btn-linha:hover { background: var(--tinta); color: var(--creme); }
     .btn svg { width: 18px; height: 18px; flex: none; }
@@ -95,44 +108,40 @@
        A imagem real fica por cima. Se a imagem não carregar, o degradê aparece. */
     .midia {
       position: relative; overflow: hidden; border-radius: var(--raio-g);
-      background: linear-gradient(150deg, #dfe7f3 0%, #e9ddd0 55%, #f2d9bd 100%);
+      background: linear-gradient(160deg, var(--ouro-claro) 0%, #f1d3b3 50%, #e6b9a4 100%);
     }
     .midia .legenda-formato {
       position: absolute; inset: auto 0 0 0; padding: 14px; text-align: center;
-      font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--tinta-suave);
+      font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; color: var(--tinta-suave); font-weight: 500;
     }
     .midia img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 
     /* =========================================================
        1. MENU FIXO
        ========================================================= */
-    .topo {
-      position: fixed; inset: 0 0 auto 0; z-index: 100;
-      transition: background .3s, box-shadow .3s, backdrop-filter .3s;
-    }
-    .topo.rolou {
-      background: rgba(243, 238, 233, .9);
-      -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
-      box-shadow: 0 1px 0 var(--linha);
-    }
+    .topo { position: fixed; inset: 0 0 auto 0; z-index: 100; transition: background .3s, box-shadow .3s; }
+    .topo.rolou { background: rgba(246, 239, 226, .94); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); box-shadow: 0 1px 0 var(--linha); }
     .topo .container { display: flex; align-items: center; justify-content: space-between; height: 76px; gap: 24px; }
-    .marca-nome { font-family: var(--serif); font-size: 1.4rem; text-decoration: none; letter-spacing: -.01em; white-space: nowrap; }
-    .marca-nome em { color: var(--azul); }
+    .marca-nome {
+      font-family: var(--logo); font-weight: 800; font-size: 1.6rem; text-decoration: none; letter-spacing: -.02em;
+      color: var(--vermelho); white-space: nowrap; font-variation-settings: "SOFT" 100, "opsz" 72;
+    }
+    .marca-nome em { font-style: normal; }
     .menu { display: flex; align-items: center; gap: 30px; }
     .menu ul { display: flex; gap: 26px; list-style: none; margin: 0; padding: 0; }
-    .menu ul a { text-decoration: none; font-size: .93rem; font-weight: 500; position: relative; padding-block: 6px; }
+    .menu ul a { text-decoration: none; font-size: .92rem; font-weight: 500; position: relative; padding-block: 6px; }
     .menu ul a::after {
-      content: ""; position: absolute; left: 0; bottom: 0; width: 100%; height: 1px; background: var(--azul);
+      content: ""; position: absolute; left: 0; bottom: 0; width: 100%; height: 2px; background: var(--vermelho);
       transform: scaleX(0); transform-origin: left; transition: transform .3s;
     }
     .menu ul a:hover::after { transform: scaleX(1); }
-    .menu .btn { padding: 11px 20px; font-size: .9rem; }
+    .menu .btn { padding: 11px 22px; font-size: .9rem; }
     .sanduiche {
-      display: none; width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--linha);
+      display: none; width: 46px; height: 46px; border-radius: 50%; border: 1.5px solid var(--tinta);
       background: var(--papel); cursor: pointer; position: relative;
     }
     .sanduiche span, .sanduiche span::before, .sanduiche span::after {
-      position: absolute; left: 50%; width: 18px; height: 1.6px; background: var(--tinta); transition: transform .3s, opacity .3s;
+      position: absolute; left: 50%; width: 18px; height: 2px; background: var(--tinta); transition: transform .3s, opacity .3s;
     }
     .sanduiche span { top: 50%; transform: translate(-50%, -50%); }
     .sanduiche span::before, .sanduiche span::after { content: ""; left: 0; }
@@ -146,115 +155,161 @@
       .sanduiche { display: block; }
       .menu {
         position: fixed; inset: 76px 0 auto 0; flex-direction: column; align-items: stretch; gap: 20px;
-        background: var(--creme); padding: 20px 20px 32px; border-bottom: 1px solid var(--linha);
-        box-shadow: 0 20px 30px -20px rgba(20,17,13,.25);
+        background: var(--creme); padding: 12px 20px 32px; border-bottom: 1px solid var(--linha);
+        box-shadow: 0 20px 30px -20px rgba(36,23,15,.3);
         visibility: hidden; opacity: 0; transform: translateY(-10px); transition: opacity .25s, transform .25s, visibility .25s;
       }
       .menu.aberto { visibility: visible; opacity: 1; transform: none; }
       .menu ul { flex-direction: column; gap: 0; }
-      .menu ul a { display: block; padding: 14px 0; font-family: var(--serif); font-size: 1.5rem; border-bottom: 1px solid var(--linha); }
+      .menu ul a { display: block; padding: 12px 0; font-family: var(--titulo); font-weight: 800; text-transform: uppercase; font-size: 2rem; line-height: 1.1; color: var(--vinho); border-bottom: 1px solid var(--linha); }
       .menu ul a::after { display: none; }
       .topo:has(.menu.aberto) { background: var(--creme); }
     }
 
     /* =========================================================
-       1. CAPA
+       1. CAPA (fita dourada, faixa vinho e nome gigante)
        ========================================================= */
-    .capa { padding-top: calc(76px + clamp(36px, 6vw, 80px)); }
-    .capa-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(32px, 6vw, 88px); align-items: center; }
-    .capa-sobre { font-size: .8rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--tinta-suave); display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
-    .capa-sobre .ponto { width: 6px; height: 6px; border-radius: 50%; background: var(--laranja); }
-    .capa h1 { font-size: clamp(3.3rem, 10vw, 8.6rem); line-height: .92; margin: 26px 0 30px; font-weight: 350; letter-spacing: -.035em; }
-    .capa h1 em { display: block; padding-left: .5em; }
-    .capa-frase { font-size: clamp(1.1rem, 1.6vw, 1.3rem); max-width: 34ch; color: var(--tinta-suave); }
-    .capa-frase strong { color: var(--tinta); font-weight: 600; }
-    .capa-botoes { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 36px; }
-    .capa-numeros { display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: clamp(22px, 4vw, 52px); margin-top: 52px; padding-top: 28px; border-top: 1px solid var(--linha); list-style: none; padding-left: 0; }
-    .capa-numeros strong { display: block; font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 400; line-height: 1; color: var(--azul); }
-    .capa-numeros span { font-size: .85rem; color: var(--tinta-suave); }
-
-    .capa-foto { position: relative; }
-    .capa-foto .midia { aspect-ratio: 4 / 5; box-shadow: var(--sombra); }
-    .capa-foto .midia img { object-position: 50% 72%; }
-    .capa-selo {
-      position: absolute; left: -28px; bottom: 36px; background: var(--papel); border-radius: var(--raio);
-      padding: 14px 18px; box-shadow: var(--sombra); display: flex; gap: 12px; align-items: center; font-size: .85rem; max-width: 230px;
+    .capa { padding-top: calc(76px + clamp(14px, 3vw, 32px)); position: relative; overflow: hidden; }
+    .capa-fita {
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+      background: var(--ouro); color: var(--tinta); padding: 10px clamp(16px, 3vw, 28px);
+      font-size: clamp(.85rem, 1.6vw, 1.15rem); font-weight: 400; position: relative; z-index: 3;
     }
-    .capa-selo .bolinha { width: 10px; height: 10px; border-radius: 50%; background: #2e9b5c; box-shadow: 0 0 0 4px rgba(46,155,92,.18); flex: none; }
-    .capa-foto .moldura { position: absolute; inset: 22px -22px -22px 22px; border: 1px solid var(--azul); border-radius: var(--raio-g); z-index: -1; opacity: .5; }
+    .capa-palco { position: relative; margin-top: clamp(-20px, -2vw, -10px); }
+    .capa-banda {
+      position: absolute; left: 0; right: 0; top: 30%; bottom: 0;
+      background: var(--damasco), var(--vinho); background-size: 84px 84px, auto;
+    }
+    .capa-palco-grid {
+      position: relative; display: grid; grid-template-columns: 1fr minmax(260px, 380px) 1fr; align-items: end; gap: 0;
+    }
+    .capa-nome { display: contents; }
+    .capa-nome span {
+      font-size: clamp(5rem, 14vw, 12.5rem); font-weight: 300; line-height: .82; color: var(--creme);
+      letter-spacing: .01em; padding-bottom: clamp(36px, 7vw, 92px); position: relative; z-index: 2;
+    }
+    .capa-nome .n1 { grid-column: 1; grid-row: 1; justify-self: end; padding-right: clamp(8px, 2vw, 24px); }
+    .capa-nome .n2 { grid-column: 3; grid-row: 1; justify-self: start; padding-left: clamp(8px, 2vw, 24px); font-weight: 300; }
+    .capa-foto { grid-column: 2; grid-row: 1; position: relative; z-index: 1; padding-top: 20px; }
+    .capa-foto .midia { aspect-ratio: 4 / 5; border-radius: 200px 200px 0 0; }
+    .capa-selo {
+      position: absolute; right: -14px; top: 40px; background: var(--papel); border-radius: 999px;
+      padding: 8px 14px; box-shadow: var(--sombra); display: flex; gap: 8px; align-items: center; font-size: .8rem; font-weight: 500;
+      transform: rotate(4deg); z-index: 3;
+    }
+    .capa-selo .bolinha { width: 9px; height: 9px; border-radius: 50%; background: #2e9b5c; box-shadow: 0 0 0 4px rgba(46,155,92,.2); flex: none; }
 
-    /* Faixa fina de marcas */
-    .faixa { margin-top: clamp(64px, 9vw, 110px); border-block: 1px solid var(--linha); overflow: hidden; padding-block: 18px; }
-    .faixa-trilho { display: flex; width: max-content; animation: correr 50s linear infinite; }
+    .capa-base { display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(32px, 6vw, 80px); align-items: center; padding-top: clamp(40px, 6vw, 72px); position: relative; }
+    .capa-sobre { font-size: .82rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--vermelho); display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+    .capa-sobre .ponto { width: 6px; height: 6px; border-radius: 50%; background: var(--ouro); }
+    .capa-frase { font-family: var(--titulo); text-transform: uppercase; font-weight: 300; font-size: clamp(2rem, 4vw, 3.3rem); line-height: 1; color: var(--vinho); margin-top: 16px; max-width: 18ch; }
+    .capa-frase strong { font-weight: 900; }
+    .capa-apoio { color: var(--tinta-suave); margin-top: 18px; max-width: 44ch; }
+    .capa-botoes { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
+    .capa-numeros { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; list-style: none; padding: 0; margin: 0 0 26px; border-block: 1.5px solid var(--vinho); }
+    .capa-numeros li { padding: 16px 12px; text-align: center; }
+    .capa-numeros li + li { border-left: 1px solid var(--linha); }
+    .capa-numeros strong { display: block; font-family: var(--titulo); font-size: clamp(2.2rem, 3.6vw, 3rem); font-weight: 900; line-height: 1; color: var(--vermelho); }
+    .capa-numeros span { font-size: .82rem; color: var(--tinta-suave); line-height: 1.3; display: block; margin-top: 4px; }
+
+    /* Lembrete estilo celular */
+    .lembrete {
+      position: relative; background: #ececec; border-radius: 16px; padding: 22px 22px 0; text-align: center;
+      box-shadow: var(--sombra); max-width: 360px; margin: 34px auto 0; transform: rotate(-2deg);
+      font-family: -apple-system, "SF Pro Text", var(--sans);
+    }
+    .lembrete-menu {
+      position: absolute; top: -20px; right: 30px; display: flex; background: #2b2b2b; color: #fff; border-radius: 8px;
+      font-size: .78rem; overflow: visible;
+    }
+    .lembrete-menu span { padding: 6px 14px; }
+    .lembrete-menu span + span { border-left: 1px solid #555; }
+    .lembrete-menu::after { content: ""; position: absolute; left: 50%; bottom: -6px; border: 6px solid transparent; border-bottom: 0; border-top-color: #2b2b2b; transform: translateX(-50%); }
+    .lembrete-topo { font-size: 1rem; color: #333; }
+    .lembrete-texto { font-family: var(--sans); font-weight: 700; font-size: 2rem; line-height: 1; color: #222; margin-top: 6px; letter-spacing: -.02em; }
+    .lembrete-sub { color: #444; margin-top: 6px; font-size: .95rem; }
+    .lembrete-ok { display: block; margin: 18px -22px 0; padding: 12px; border-top: 2px solid #b9b9b9; color: #2f6fd6; font-size: 1.05rem; }
+    .lembrete .coracao { position: absolute; left: 12px; bottom: 56px; color: #e0479e; font-size: 1.4rem; transform: rotate(-12deg); }
+
+    /* Faixa de marcas */
+    .faixa { margin-top: clamp(56px, 8vw, 96px); background: var(--vermelho); color: var(--creme); overflow: hidden; padding-block: 14px; transform: rotate(-1.2deg); margin-inline: -20px; }
+    .faixa-trilho { display: flex; width: max-content; animation: correr 46s linear infinite; }
     .faixa:hover .faixa-trilho { animation-play-state: paused; }
     .faixa ul { display: flex; list-style: none; margin: 0; padding: 0; }
-    .faixa li { font-family: var(--serif); font-style: italic; font-size: 1.3rem; white-space: nowrap; padding-inline: 28px; display: flex; align-items: center; gap: 56px; color: var(--tinta-suave); }
-    .faixa li::after { content: "✦"; font-style: normal; font-size: .7rem; color: var(--laranja); margin-right: -28px; }
+    .faixa li { font-family: var(--titulo); text-transform: uppercase; font-weight: 800; font-size: 1.6rem; white-space: nowrap; padding-inline: 24px; display: flex; align-items: center; gap: 48px; letter-spacing: .02em; }
+    .faixa li::after { content: "★"; font-size: 1rem; color: var(--ouro); margin-right: -24px; }
     @keyframes correr { to { transform: translateX(-50%); } }
 
     /* =========================================================
-       2. SOBRE MIM
+       2. SOBRE MIM (fotos em molduras)
        ========================================================= */
-    .sobre-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(40px, 7vw, 110px); align-items: center; }
-    .sobre-foto .midia { aspect-ratio: 4 / 5; box-shadow: var(--sombra); }
-    .sobre-foto .midia img { object-position: 50% 30%; }
-    .sobre-foto figcaption { margin-top: 14px; font-size: .85rem; color: var(--tinta-suave); font-style: italic; font-family: var(--serif); }
-    .sobre-texto p + p { margin-top: 18px; }
-    .sobre-texto .abre { font-family: var(--serif); font-size: clamp(1.35rem, 2.2vw, 1.7rem); line-height: 1.35; color: var(--tinta); margin-bottom: 22px; }
+    .sobre-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(40px, 7vw, 100px); align-items: center; position: relative; z-index: 1; }
+    .sobre-texto { order: 1; }
+    .sobre-foto { order: 2; position: relative; margin: 0; padding: 0 0 20px 20px; }
+    .sobre-foto .midia { aspect-ratio: 4 / 5; border: 10px solid var(--papel); border-radius: 4px; box-shadow: 0 0 0 1px #c9a46a, var(--sombra); transform: rotate(2deg); }
+    .sobre-foto::before {
+      content: ""; position: absolute; left: 0; bottom: 0; width: 46%; aspect-ratio: 1; border: 8px solid var(--papel);
+      box-shadow: 0 0 0 1px #c9a46a, var(--sombra); background: linear-gradient(140deg, #f1d3b3, var(--ouro-claro)); transform: rotate(-6deg); z-index: 2;
+    }
+    .sobre-foto figcaption { margin-top: 18px; padding-left: 50%; font-size: .9rem; color: var(--tinta-suave); text-align: right; line-height: 1.4; }
+    .sobre-texto p + p { margin-top: 16px; }
+    .sobre-texto .abre { font-size: clamp(1.2rem, 1.8vw, 1.4rem); line-height: 1.45; color: var(--tinta); margin-bottom: 20px; font-weight: 400; }
     .sobre-texto > p { color: var(--tinta-suave); }
-    .promessas { list-style: none; padding: 0; margin: 36px 0 0; border-top: 1px solid var(--linha); }
-    .promessas li { display: grid; grid-template-columns: 48px 1fr; gap: 12px; padding: 18px 0; border-bottom: 1px solid var(--linha); align-items: baseline; }
-    .promessas .n { font-family: var(--serif); font-style: italic; color: var(--laranja); font-size: 1.1rem; }
-    .promessas strong { font-weight: 600; }
-    .assinatura { margin-top: 34px; font-family: var(--serif); font-style: italic; font-size: 2rem; color: var(--azul); line-height: 1; }
-    .assinatura small { display: block; font-family: var(--sans); font-style: normal; font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; color: var(--tinta-suave); margin-top: 10px; }
+    .promessas { list-style: none; padding: 0; margin: 34px 0 0; display: grid; gap: 10px; }
+    .promessas li { display: grid; grid-template-columns: 44px 1fr; gap: 12px; padding: 16px 18px; background: var(--papel); border-radius: var(--raio); align-items: baseline; box-shadow: 0 1px 0 var(--linha); }
+    .promessas .n { font-family: var(--titulo); font-weight: 900; color: var(--vermelho); font-size: 1.5rem; line-height: 1; }
+    .assinatura { margin-top: 30px; font-family: var(--logo); font-weight: 800; font-size: 2.2rem; color: var(--vermelho); line-height: 1; font-variation-settings: "SOFT" 100; }
+    .assinatura small { display: block; font-family: var(--sans); font-weight: 500; font-size: .8rem; letter-spacing: .16em; text-transform: uppercase; color: var(--tinta-suave); margin-top: 10px; }
 
     /* =========================================================
-       3. CONTEÚDOS DE DESTAQUE
+       3. CONTEÚDOS DE DESTAQUE (fundo vinho adamascado)
        ========================================================= */
-    .destaques { background: var(--papel); }
-    .destaques-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(20px, 3vw, 40px); }
+    .destaques { background: var(--damasco), var(--vinho); background-size: 84px 84px, auto; color: var(--creme); overflow: hidden; }
+    .destaques .rotulo { color: var(--ouro); }
+    .destaques .titulo-secao { color: var(--creme); }
+    .destaques .titulo-secao em { color: var(--ouro); }
+    .destaques .sub { color: rgba(246, 239, 226, .82); }
+    .destaques-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(20px, 3vw, 40px); position: relative; z-index: 1; }
     .destaque { display: block; text-decoration: none; }
-    .destaque .midia { aspect-ratio: 9 / 16; box-shadow: var(--sombra); }
+    .destaque .midia { aspect-ratio: 9 / 16; border: 6px solid var(--ouro); box-shadow: 0 30px 50px -24px rgba(0,0,0,.6); }
     .destaque .midia img { transition: transform .8s cubic-bezier(.2,.7,.2,1); }
     .destaque:hover .midia img { transform: scale(1.04); }
     .play {
       position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2;
-      width: 74px; height: 74px; border-radius: 50%; background: rgba(251, 248, 244, .92);
-      display: grid; place-items: center; box-shadow: 0 8px 26px rgba(20,17,13,.25); transition: transform .3s, background .3s;
+      width: 74px; height: 74px; border-radius: 50%; background: rgba(255, 250, 241, .94);
+      display: grid; place-items: center; box-shadow: 0 8px 26px rgba(36,23,15,.3); transition: transform .3s, background .3s;
     }
-    .play svg { width: 24px; height: 24px; margin-left: 4px; fill: var(--azul); transition: fill .3s; }
-    .destaque:hover .play, .trab:hover .play { transform: translate(-50%, -50%) scale(1.08); background: var(--azul); }
+    .play svg { width: 24px; height: 24px; margin-left: 4px; fill: var(--vermelho); transition: fill .3s; }
+    .destaque:hover .play, .trab:hover .play { transform: translate(-50%, -50%) scale(1.08); background: var(--vermelho); }
     .destaque:hover .play svg, .trab:hover .play svg { fill: #fff; }
-    .destaque-info { padding-top: 24px; }
-    .destaque-num { font-family: var(--serif); font-size: clamp(2.6rem, 4.4vw, 3.6rem); line-height: 1; color: var(--azul); font-weight: 400; letter-spacing: -.03em; }
-    .destaque-rot { display: block; font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--tinta-suave); margin-top: 8px; font-weight: 600; }
-    .destaque h3 { font-size: 1.5rem; margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--linha); }
-    .destaque p { color: var(--tinta-suave); margin-top: 8px; font-size: .97rem; }
+    .destaque-info { padding-top: 22px; }
+    .destaque-num { font-family: var(--titulo); font-size: clamp(3.4rem, 5.6vw, 4.6rem); line-height: .9; color: var(--ouro); font-weight: 900; }
+    .destaque-rot { display: block; font-size: .8rem; letter-spacing: .16em; text-transform: uppercase; color: var(--creme); margin-top: 8px; font-weight: 600; }
+    .destaque h3 { font-size: 1.9rem; font-weight: 800; margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(246,239,226,.25); color: var(--creme); }
+    .destaque p { color: rgba(246, 239, 226, .8); margin-top: 8px; font-size: .97rem; }
 
     /* =========================================================
        4. TRABALHOS POR NICHO
        ========================================================= */
-    .filtros { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 40px; }
+    .filtros { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 40px; position: relative; z-index: 1; }
     .filtro {
-      border: 1px solid var(--linha); background: transparent; border-radius: 999px; padding: 10px 18px;
-      font-size: .9rem; font-weight: 500; cursor: pointer; transition: background .25s, color .25s, border-color .25s;
+      border: 1.5px solid var(--vinho); background: transparent; color: var(--vinho); border-radius: 999px; padding: 9px 18px;
+      font-size: .92rem; font-weight: 600; cursor: pointer; transition: background .25s, color .25s;
     }
-    .filtro sup { font-size: .68rem; color: var(--tinta-suave); margin-left: 3px; }
-    .filtro:hover { border-color: var(--tinta); }
-    .filtro[aria-pressed="true"] { background: var(--tinta); color: var(--creme); border-color: var(--tinta); }
-    .filtro[aria-pressed="true"] sup { color: rgba(243,238,233,.7); }
-    .galeria { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(14px, 2vw, 24px); list-style: none; padding: 0; margin: 0; }
+    .filtro sup { font-size: .68rem; margin-left: 3px; opacity: .7; }
+    .filtro:hover { background: rgba(143, 27, 30, .08); }
+    .filtro[aria-pressed="true"] { background: var(--vinho); color: var(--creme); }
+    .galeria { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(14px, 2vw, 22px); list-style: none; padding: 0; margin: 0; position: relative; z-index: 1; }
     .trab { display: block; text-decoration: none; }
-    .trab .midia { aspect-ratio: 9 / 16; border-radius: var(--raio); }
+    .trab .midia { aspect-ratio: 9 / 16; border-radius: var(--raio-g); box-shadow: var(--sombra); }
     .trab .legenda-formato { inset: 10px 0 auto 0; font-size: .7rem; }
-    .trab .midia::after { content: ""; position: absolute; inset: 55% 0 0 0; background: linear-gradient(transparent, rgba(20,17,13,.72)); z-index: 1; }
+    .trab .midia::after { content: ""; position: absolute; inset: 50% 0 0 0; background: linear-gradient(transparent, rgba(108, 18, 21, .85)); z-index: 1; }
     .trab .play { width: 52px; height: 52px; opacity: 0; transition: opacity .3s, transform .3s, background .3s; }
     .trab .play svg { width: 18px; height: 18px; }
     .trab:hover .play, .trab:focus-visible .play { opacity: 1; }
     .trab-info { position: absolute; left: 14px; right: 14px; bottom: 14px; z-index: 2; color: #fff; }
-    .trab-info strong { display: block; font-family: var(--serif); font-size: 1.2rem; font-weight: 400; line-height: 1.15; }
-    .trab-info span { font-size: .74rem; letter-spacing: .1em; text-transform: uppercase; opacity: .85; }
+    .trab-info strong { display: block; font-family: var(--titulo); text-transform: uppercase; font-size: 1.6rem; font-weight: 800; line-height: 1; }
+    .trab-info span { font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ouro-claro); }
     .galeria li { animation: surgir .45s ease both; }
     @keyframes surgir { from { opacity: 0; transform: translateY(12px); } }
     .mais { display: flex; justify-content: center; margin-top: 44px; }
@@ -262,73 +317,73 @@
     /* =========================================================
        5. COMO EU TE AJUDO
        ========================================================= */
-    .servicos-grid { display: grid; grid-template-columns: repeat(3, 1fr); list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--tinta); }
-    .servico { padding: 36px 32px 44px 0; border-bottom: 1px solid var(--linha); position: relative; }
-    .servico:not(:nth-child(3n+1)) { padding-left: 32px; border-left: 1px solid var(--linha); }
-    .servico .n { font-family: var(--serif); font-style: italic; font-size: 1rem; color: var(--laranja); }
-    .servico h3 { font-size: 1.75rem; margin: 22px 0 12px; }
+    .servicos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; list-style: none; padding: 0; margin: 0; position: relative; z-index: 1; }
+    .servico { padding: 30px 28px 34px; background: var(--papel); border-radius: var(--raio-g); box-shadow: 0 1px 0 var(--linha); position: relative; transition: transform .3s, box-shadow .3s; }
+    .servico:hover { transform: translateY(-4px) rotate(-.6deg); box-shadow: var(--sombra); }
+    .servico .n { font-family: var(--titulo); font-weight: 900; font-size: 3.2rem; line-height: 1; color: var(--vermelho); }
+    .servico h3 { font-size: 2rem; font-weight: 800; margin: 14px 0 10px; color: var(--vinho); }
     .servico p { color: var(--tinta-suave); font-size: .98rem; }
-    .servicos-fim { margin-top: 48px; display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+    .servicos-fim { margin-top: 44px; display: flex; gap: 20px; align-items: center; flex-wrap: wrap; position: relative; z-index: 1; }
     .servicos-fim p { color: var(--tinta-suave); }
 
     /* =========================================================
-       6. NÚMEROS E DEPOIMENTOS
+       6. NÚMEROS E DEPOIMENTOS (dourado com confete)
        ========================================================= */
-    .numeros { background: var(--creme-2); }
-    .metricas { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; list-style: none; padding: 0; margin: 0 0 clamp(64px, 8vw, 100px); }
-    .metrica { padding: 8px 24px 8px 0; }
-    .metrica + .metrica { padding-left: 24px; border-left: 1px solid var(--linha); }
-    .metrica strong { display: block; font-family: var(--serif); font-weight: 350; font-size: clamp(2.8rem, 5.6vw, 4.8rem); line-height: 1; letter-spacing: -.04em; color: var(--azul); font-variant-numeric: tabular-nums; }
-    .metrica span { display: block; margin-top: 12px; color: var(--tinta-suave); font-size: .95rem; max-width: 20ch; }
-    .sub-titulo { font-family: var(--serif); font-size: 1.6rem; margin-bottom: 26px; display: flex; align-items: center; gap: 16px; }
-    .sub-titulo::after { content: ""; flex: 1; height: 1px; background: var(--linha); }
-    .resultados { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; list-style: none; padding: 0; margin: 0 0 clamp(64px, 8vw, 100px); }
-    .resultado { background: var(--papel); border-radius: var(--raio-g); padding: 32px; box-shadow: var(--sombra); }
-    .resultado .marca { font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; color: var(--tinta-suave); }
-    .resultado strong { display: block; font-family: var(--serif); font-weight: 400; font-size: 2.6rem; line-height: 1; margin: 18px 0 12px; color: var(--tinta); }
-    .resultado p { color: var(--tinta-suave); font-size: .97rem; }
-    .resultado .tag { display: inline-block; width: 26px; height: 2px; background: var(--laranja); margin-top: 22px; }
-    .depoimentos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; list-style: none; padding: 0; margin: 0; }
-    .depoimento { border-top: 1px solid var(--tinta); padding-top: 26px; margin: 0; }
-    .depoimento blockquote { margin: 0; font-family: var(--serif); font-size: clamp(1.2rem, 1.8vw, 1.45rem); line-height: 1.4; font-weight: 350; }
-    .depoimento blockquote::before { content: "“"; display: block; font-size: 3.6rem; line-height: .6; color: var(--azul); margin-bottom: 8px; }
-    .depoimento figcaption { margin-top: 20px; font-size: .92rem; }
-    .depoimento figcaption strong { font-weight: 600; }
+    .numeros { background: linear-gradient(170deg, #fbeccb 0%, var(--ouro-claro) 45%, #efc777 100%); overflow: hidden; }
+    .confete { position: absolute; width: 22px; height: 30px; background: linear-gradient(135deg, #fff3c4, #d9a63e 60%, #b9862a); opacity: .75; z-index: 0; border-radius: 2px; }
+    .numeros .container { position: relative; z-index: 1; }
+    .metricas { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; list-style: none; padding: 0; margin: 0 0 clamp(60px, 8vw, 96px); }
+    .metrica { padding: 26px 22px; background: rgba(255, 250, 241, .7); border-radius: var(--raio-g); }
+    .metrica strong { display: block; font-family: var(--titulo); font-weight: 900; font-size: clamp(3.4rem, 6vw, 5.2rem); line-height: .9; color: var(--vinho); font-variant-numeric: tabular-nums; }
+    .metrica span { display: block; margin-top: 10px; color: var(--tinta-suave); font-size: .95rem; }
+    .sub-titulo { font-size: 2.2rem; font-weight: 800; color: var(--vinho); margin-bottom: 24px; display: flex; align-items: center; gap: 16px; }
+    .sub-titulo::after { content: ""; flex: 1; height: 1.5px; background: rgba(143, 27, 30, .3); }
+    .resultados { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; list-style: none; padding: 0; margin: 0 0 clamp(60px, 8vw, 96px); }
+    .resultado { background: var(--vinho); color: var(--creme); border-radius: var(--raio-g); padding: 30px; box-shadow: var(--sombra); }
+    .resultado .marca { font-size: .8rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; color: var(--ouro); }
+    .resultado strong { display: block; font-family: var(--titulo); font-weight: 900; font-size: 3.6rem; line-height: .9; margin: 16px 0 12px; }
+    .resultado p { color: rgba(246, 239, 226, .82); font-size: .97rem; }
+    .resultado .tag { display: none; }
+    .depoimentos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; list-style: none; padding: 0; margin: 0; }
+    .depoimento { background: var(--papel); border-radius: var(--raio-g); padding: 28px; margin: 0; height: 100%; }
+    .depoimento blockquote { margin: 0; font-size: 1.08rem; line-height: 1.55; color: var(--tinta); }
+    .depoimento blockquote::before { content: "“"; display: block; font-family: var(--logo); font-weight: 800; font-size: 4rem; line-height: .6; color: var(--vermelho); margin-bottom: 6px; }
+    .depoimento figcaption { margin-top: 18px; font-size: .92rem; }
     .depoimento figcaption span { color: var(--tinta-suave); }
 
     /* =========================================================
-       7. BORA CRIAR JUNTOS
+       7. BORA CRIAR JUNTOS (vinho adamascado)
        ========================================================= */
-    .contato { background: var(--azul); color: #fff; }
-    .contato .rotulo { color: rgba(255,255,255,.8); }
-    .contato .rotulo::before { background: var(--laranja); }
-    .contato h2 em { color: #ffd9a8; }
-    .contato .sub { color: rgba(255,255,255,.82); }
-    .contato-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 7vw, 100px); align-items: start; }
-    .canais { display: grid; gap: 12px; margin-top: 40px; }
+    .contato { background: var(--damasco), var(--vinho); background-size: 84px 84px, auto; color: var(--creme); overflow: hidden; }
+    .contato .rotulo { color: var(--ouro); }
+    .contato .titulo-secao { color: var(--creme); }
+    .contato .titulo-secao em { color: var(--ouro); }
+    .contato .sub { color: rgba(246, 239, 226, .85); }
+    .contato-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 7vw, 100px); align-items: start; position: relative; z-index: 1; }
+    .canais { display: grid; gap: 12px; margin-top: 38px; }
     .canal {
-      display: flex; align-items: center; gap: 16px; padding: 18px 22px; border-radius: var(--raio);
-      border: 1px solid rgba(255,255,255,.28); text-decoration: none; transition: background .25s, border-color .25s;
+      display: flex; align-items: center; gap: 16px; padding: 16px 22px; border-radius: var(--raio);
+      border: 1.5px solid rgba(232, 194, 98, .5); text-decoration: none; transition: background .25s, border-color .25s;
     }
-    .canal:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.6); }
-    .canal svg { width: 22px; height: 22px; flex: none; }
+    .canal:hover { background: rgba(232, 194, 98, .14); border-color: var(--ouro); }
+    .canal svg { width: 22px; height: 22px; flex: none; color: var(--ouro); }
     .canal span { display: flex; flex-direction: column; line-height: 1.3; min-width: 0; }
-    .canal small { font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; opacity: .75; }
+    .canal small { font-size: .74rem; letter-spacing: .14em; text-transform: uppercase; opacity: .75; }
     .canal b { font-weight: 600; overflow-wrap: anywhere; }
-    .form-caixa { background: var(--papel); color: var(--tinta); border-radius: var(--raio-g); padding: clamp(26px, 4vw, 44px); box-shadow: 0 30px 60px -30px rgba(0,0,0,.5); }
-    .form-caixa h3 { font-size: 1.9rem; margin-bottom: 24px; }
-    .campo { display: grid; gap: 8px; margin-bottom: 18px; }
+    .form-caixa { background: var(--creme); color: var(--tinta); border-radius: var(--raio-g); padding: clamp(26px, 4vw, 42px); box-shadow: 0 30px 60px -30px rgba(0,0,0,.6); position: relative; }
+    .form-caixa h3 { font-size: 2.6rem; font-weight: 800; color: var(--vinho); margin-bottom: 22px; }
+    .campo { display: grid; gap: 8px; margin-bottom: 16px; }
     .campo label { font-size: .85rem; font-weight: 600; }
     .campo input, .campo textarea {
-      width: 100%; padding: 14px 16px; border-radius: var(--raio); border: 1px solid rgba(20,17,13,.22);
+      width: 100%; padding: 14px 16px; border-radius: var(--raio); border: 1.5px solid rgba(36,23,15,.2);
       background: #fff; transition: border-color .2s, box-shadow .2s;
     }
     .campo textarea { min-height: 130px; resize: vertical; }
-    .campo input:focus, .campo textarea:focus { outline: none; border-color: var(--azul); box-shadow: 0 0 0 3px rgba(0,73,164,.18); }
-    .erro { color: #b3261e; font-size: .85rem; min-height: 1.2em; }
+    .campo input:focus, .campo textarea:focus { outline: none; border-color: var(--vermelho); box-shadow: 0 0 0 3px rgba(196,47,42,.18); }
+    .erro { color: #a3201b; font-size: .85rem; min-height: 1.2em; font-weight: 500; }
     .form-caixa .btn { width: 100%; }
     .confirmacao { text-align: center; padding: 20px 0; }
-    .confirmacao .check { width: 64px; height: 64px; border-radius: 50%; background: var(--azul); color: #fff; display: grid; place-items: center; margin: 0 auto 20px; }
+    .confirmacao .check { width: 64px; height: 64px; border-radius: 50%; background: var(--vermelho); color: #fff; display: grid; place-items: center; margin: 0 auto 20px; }
     .confirmacao .check svg { width: 28px; height: 28px; }
     .confirmacao h3 { margin-bottom: 12px; }
     .confirmacao p { color: var(--tinta-suave); }
@@ -336,41 +391,47 @@
     [hidden] { display: none !important; }
 
     /* =========================================================
-       8. RODAPÉ
+       8. RODAPÉ (arroba repetida, como na referência)
        ========================================================= */
-    .rodape { background: var(--tinta); color: var(--creme); padding-block: 64px 36px; }
-    .rodape-topo { display: flex; justify-content: space-between; align-items: end; gap: 32px; flex-wrap: wrap; padding-bottom: 40px; border-bottom: 1px solid rgba(243,238,233,.16); }
-    .rodape .marca-nome { font-size: clamp(2.2rem, 6vw, 4rem); line-height: 1; }
-    .rodape .marca-nome em { color: #8fb6ea; }
+    .rodape { background: var(--creme); color: var(--tinta); padding-block: 56px 32px; }
+    .rodape-topo { display: flex; justify-content: space-between; align-items: center; gap: 28px; flex-wrap: wrap; padding-bottom: 32px; }
+    .rodape .marca-nome { font-size: clamp(2.6rem, 7vw, 4.4rem); line-height: 1; }
     .redes { display: flex; gap: 22px; list-style: none; padding: 0; margin: 0; flex-wrap: wrap; }
-    .redes a { text-decoration: none; font-size: .95rem; opacity: .85; }
-    .redes a:hover { opacity: 1; text-decoration: underline; text-underline-offset: 4px; }
-    .rodape-base { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 26px; font-size: .85rem; opacity: .7; }
+    .redes a { text-decoration: none; font-size: .95rem; font-weight: 500; }
+    .redes a:hover { color: var(--vermelho); text-decoration: underline; text-underline-offset: 4px; }
+    .arrobas { display: flex; justify-content: space-between; gap: 16px; padding-block: 18px; border-block: 1.5px solid var(--vermelho); color: var(--vermelho); font-weight: 500; overflow: hidden; }
+    .arrobas span:nth-child(n+2) { white-space: nowrap; }
+    .rodape-base { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 22px; font-size: .85rem; color: var(--tinta-suave); }
 
     /* =========================================================
        CARD DE CAPTURA (mídia kit)
        ========================================================= */
     .captura-fundo {
-      position: fixed; inset: 0; z-index: 300; background: rgba(20,17,13,.6);
+      position: fixed; inset: 0; z-index: 300; background: rgba(36,23,15,.62);
       display: grid; place-items: center; padding: 20px; opacity: 0; transition: opacity .3s;
     }
     .captura-fundo.visivel { opacity: 1; }
     .captura {
       position: relative; width: min(440px, 100%); background: var(--creme); border-radius: var(--raio-g);
-      padding: clamp(28px, 5vw, 42px); box-shadow: 0 40px 80px -30px rgba(0,0,0,.6);
+      padding: 0 clamp(24px, 5vw, 38px) clamp(26px, 5vw, 36px); box-shadow: 0 40px 80px -30px rgba(0,0,0,.6); overflow: hidden;
       transform: translateY(16px) scale(.98); transition: transform .35s cubic-bezier(.2,.7,.2,1);
       max-height: calc(100vh - 40px); overflow-y: auto;
     }
+    .captura::before {
+      content: "Mídia kit 2026"; display: block; margin: 0 calc(-1 * clamp(24px, 5vw, 38px)) 26px; padding: 12px 24px;
+      background: var(--damasco), var(--vinho); background-size: 84px 84px, auto; color: var(--ouro); font-weight: 500; letter-spacing: .14em; text-transform: uppercase; font-size: .8rem;
+    }
     .captura-fundo.visivel .captura { transform: none; }
-    .captura .rotulo { margin-bottom: 14px; }
-    .captura h2 { font-size: clamp(1.9rem, 6vw, 2.4rem); margin-bottom: 12px; }
-    .captura > p { color: var(--tinta-suave); margin-bottom: 24px; }
+    .captura .rotulo { margin-bottom: 10px; }
+    .captura h2 { font-size: clamp(2.6rem, 8vw, 3.2rem); color: var(--vinho); margin-bottom: 12px; }
+    .captura > p, .captura form > p:not(.erro):not(.rotulo) { color: var(--tinta-suave); margin-bottom: 22px; }
     .captura .btn { width: 100%; }
     .fechar {
-      position: absolute; top: 14px; right: 14px; width: 40px; height: 40px; border-radius: 50%;
-      border: 1px solid var(--linha); background: var(--papel); cursor: pointer; display: grid; place-items: center;
+      position: absolute; top: 6px; right: 8px; width: 36px; height: 36px; border-radius: 50%;
+      border: 0; background: transparent; color: var(--creme); cursor: pointer; display: grid; place-items: center;
     }
-    .fechar svg { width: 16px; height: 16px; }
+    .fechar:hover { background: rgba(255,255,255,.12); }
+    .fechar svg { width: 18px; height: 18px; }
 
     /* =========================================================
        ANIMAÇÃO DE ENTRADA AO ROLAR
@@ -379,42 +440,49 @@
     .js .revelar.visto { opacity: 1; transform: none; }
     .js .revelar[data-atraso="1"] { transition-delay: .12s; }
     .js .revelar[data-atraso="2"] { transition-delay: .24s; }
+    .js .lembrete.revelar.visto { transform: rotate(-2deg); }
 
     /* =========================================================
        RESPONSIVO
        ========================================================= */
     @media (max-width: 1024px) {
       .galeria { grid-template-columns: repeat(3, 1fr); }
-      .metricas { grid-template-columns: repeat(2, 1fr); row-gap: 40px; }
-      .metrica:nth-child(3) { padding-left: 0; border-left: 0; }
+      .metricas { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 860px) {
-      .capa-grid, .sobre-grid, .contato-grid { grid-template-columns: 1fr; }
-      .capa-foto { max-width: 440px; width: calc(100% - 22px); }
-      .capa-selo { left: 12px; }
-      .sobre-foto { max-width: 440px; }
+      .capa-base, .sobre-grid, .contato-grid { grid-template-columns: 1fr; }
+      .sobre-foto { order: 0; max-width: 420px; }
       .destaques-grid { grid-template-columns: 1fr; max-width: 420px; margin-inline: auto; gap: 56px; }
       .servicos-grid { grid-template-columns: 1fr 1fr; }
-      .servico, .servico:not(:nth-child(3n+1)) { padding: 30px 24px 36px 0; border-left: 0; }
-      .servico:nth-child(2n) { padding-left: 24px; border-left: 1px solid var(--linha); }
       .resultados { grid-template-columns: 1fr; }
-      .depoimentos { grid-template-columns: 1fr; gap: 36px; }
+      .depoimentos { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 680px) {
+      .capa-palco-grid { grid-template-columns: 1fr 1fr; }
+      .capa-foto { grid-column: 1 / -1; grid-row: 1; width: min(300px, 78%); justify-self: center; }
+      .capa-banda { top: 52%; }
+      .capa-nome span { grid-row: 2; font-size: clamp(4.4rem, 25vw, 7rem); padding-block: 4px 26px; }
+      .capa-nome .n1 { grid-column: 1; grid-row: 2; justify-self: end; }
+      .capa-nome .n2 { grid-column: 2; grid-row: 2; justify-self: start; }
+      .capa-foto { margin-bottom: 4px; }
+      .capa-selo { right: -10px; top: 28px; }
+      .estrela { width: 60px; height: 60px; }
     }
     @media (max-width: 560px) {
       body { font-size: 1rem; }
       .container { width: calc(100% - 32px); }
-      .capa-numeros { grid-template-columns: repeat(3, 1fr); gap: 14px; }
-      .capa-numeros span { font-size: .78rem; display: block; line-height: 1.3; margin-top: 4px; }
+      .capa-fita { font-size: .8rem; }
       .capa-botoes .btn { flex: 1 1 100%; }
+      .capa-numeros li { padding-inline: 4px; }
       .galeria { grid-template-columns: repeat(2, 1fr); }
       .trab .play { opacity: 1; width: 42px; height: 42px; }
-      .trab-info strong { font-size: 1.02rem; }
+      .trab-info strong { font-size: 1.25rem; }
       .servicos-grid { grid-template-columns: 1fr; }
-      .servico:nth-child(2n) { padding-left: 0; border-left: 0; }
-      .metricas { grid-template-columns: 1fr 1fr; }
-      .metrica, .metrica + .metrica { padding: 0 12px 0 0; border-left: 0; }
-      .metrica:nth-child(2n) { padding-left: 16px; border-left: 1px solid var(--linha); }
-      .faixa li { font-size: 1.1rem; }
+      .metricas { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .metrica { padding: 20px 16px; }
+      .faixa li { font-size: 1.3rem; }
+      .arrobas span:nth-child(n+2) { display: none; }
+      .lembrete-texto { font-size: 1.7rem; }
     }
 
     /* Quem pediu menos movimento no sistema não vê animação */
@@ -430,6 +498,13 @@
 </head>
 
 <body>
+  <!-- Estrela rabiscada usada como enfeite no site inteiro -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <filter id="aspero"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2" seed="4" result="ruido"/><feDisplacementMap in="SourceGraphic" in2="ruido" scale="7"/></filter>
+      <symbol id="estrela" viewBox="-6 -6 112 112"><path filter="url(#aspero)" d="M50 3 62 36 98 35 69 57 80 94 50 73 19 95 31 58 2 37 38 36Z"/></symbol>
+    </defs>
+  </svg>
   <a class="pular" href="#conteudo">Pular para o conteúdo</a>
 
   <!-- ========== 1. MENU FIXO ========== -->
@@ -455,29 +530,50 @@
 
     <!-- ========== 1. CAPA ========== -->
     <section class="capa" id="inicio" aria-labelledby="capa-titulo">
-      <div class="container capa-grid">
+      <div class="container">
+        <p class="capa-fita"><span>Portfólio UGC 2026</span><span>Caraguá, SP</span></p>
+      </div>
+
+      <div class="capa-palco">
+        <div class="capa-banda" aria-hidden="true"></div>
+        <div class="container capa-palco-grid">
+          <h1 id="capa-titulo" class="capa-nome"><span class="n1">Lara</span><span class="n2">Dam</span></h1>
+          <div class="capa-foto">
+            <!-- FOTO DA CAPA: o ideal é uma foto sua recortada, sem fundo (PNG), no formato 4:5.
+                 Para colocar, troque o bloco abaixo por:
+                 <div class="midia"><img src="fotos/sua-foto.png" alt="Descrição da foto"></div> -->
+            <div class="midia" role="img" aria-label="Espaço para a foto da creator">
+              <span class="legenda-formato">foto da creator 4:5</span>
+            </div>
+            <p class="capa-selo"><span class="bolinha" aria-hidden="true"></span> Agenda aberta</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="container capa-base">
+        <svg class="estrela preta" style="right:2%;top:-30px" aria-hidden="true"><use href="#estrela"/></svg>
         <div>
-          <p class="capa-sobre revelar">UGC Creator <span class="ponto" aria-hidden="true"></span> Caraguá, SP</p>
-          <h1 id="capa-titulo" class="revelar" data-atraso="1">Lara <em>Dam</em></h1>
-          <p class="capa-frase revelar" data-atraso="1">Eu crio vídeos verdadeiros que fazem o seu público <strong>parar a rolagem, confiar na sua marca e comprar.</strong></p>
+          <p class="capa-sobre revelar">UGC Creator <span class="ponto" aria-hidden="true"></span> Litoral de São Paulo</p>
+          <p class="capa-frase revelar" data-atraso="1">Vídeos que fazem o seu público <strong>parar, confiar e comprar.</strong></p>
+          <p class="capa-apoio revelar" data-atraso="1">Conteúdo verdadeiro, com cara de gente de verdade e pensado para vender.</p>
           <div class="capa-botoes revelar" data-atraso="2">
             <a class="btn btn-azul" href="#contato">Falar comigo
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
             <a class="btn btn-linha" href="#trabalhos">Ver os trabalhos</a>
           </div>
-          <!-- Os três números da capa vêm do array numerosCapa, no começo do script -->
-          <ul class="capa-numeros revelar" data-atraso="2" id="capa-numeros"></ul>
         </div>
-
-        <div class="capa-foto revelar" data-atraso="1">
-          <span class="moldura" aria-hidden="true"></span>
-          <!-- FOTO DA CAPA: troque o arquivo em src. Formato ideal 4:5 (ex.: 1080x1350).
-               Se a imagem não carregar, aparece o degradê com a legenda. -->
-          <div class="midia" role="img" aria-label="Espaço para a foto da creator">
-            <span class="legenda-formato">foto da creator 4:5</span>
+        <div>
+          <!-- Os três números da capa vêm do array numerosCapa, no começo do script -->
+          <ul class="capa-numeros revelar" data-atraso="1" id="capa-numeros"></ul>
+          <div class="lembrete revelar" data-atraso="2" aria-hidden="true">
+            <span class="lembrete-menu"><span>Copiar</span><span>Colar</span></span>
+            <p class="lembrete-topo">Lembrete</p>
+            <p class="lembrete-texto">conteúdo que vende</p>
+            <p class="lembrete-sub">e posiciona a sua marca</p>
+            <span class="coracao">♡</span>
+            <span class="lembrete-ok">Ok</span>
           </div>
-          <p class="capa-selo"><span class="bolinha" aria-hidden="true"></span> Agenda aberta para novas marcas</p>
         </div>
       </div>
 
@@ -489,6 +585,7 @@
 
     <!-- ========== 2. SOBRE MIM ========== -->
     <section class="secao" id="sobre" aria-labelledby="sobre-titulo">
+      <svg class="estrela vermelha" style="left:3%;bottom:8%;transform:rotate(-14deg)" aria-hidden="true"><use href="#estrela"/></svg>
       <div class="container sobre-grid">
         <figure class="sobre-foto revelar" style="margin:0">
           <!-- FOTO DO SOBRE: troque o arquivo em src. Formato ideal 4:5. -->
@@ -521,6 +618,7 @@
     <!-- Os três cards são montados pelo array destaques, no começo do script.
          LINK DO VÍDEO: campo link de cada item. CAPA: campo capa (arquivo em fotos/capas, formato 9:16). -->
     <section class="secao destaques" id="destaques" aria-labelledby="destaques-titulo">
+      <svg class="estrela dourada" style="right:5%;top:60px;width:110px;height:110px" aria-hidden="true"><use href="#estrela"/></svg>
       <div class="container">
         <div class="cabeca">
           <div>
@@ -535,6 +633,7 @@
 
     <!-- ========== 4. TRABALHOS POR NICHO ========== -->
     <section class="secao" id="trabalhos" aria-labelledby="trabalhos-titulo">
+      <svg class="estrela preta" style="right:4%;top:70px;transform:rotate(18deg)" aria-hidden="true"><use href="#estrela"/></svg>
       <div class="container">
         <div class="cabeca">
           <div>
@@ -552,6 +651,7 @@
 
     <!-- ========== 5. COMO EU TE AJUDO ========== -->
     <section class="secao" id="servicos" aria-labelledby="servicos-titulo" style="padding-top:0">
+      <svg class="estrela vermelha" style="right:6%;top:-10px;transform:rotate(-8deg)" aria-hidden="true"><use href="#estrela"/></svg>
       <div class="container">
         <div class="cabeca">
           <div>
@@ -570,6 +670,7 @@
 
     <!-- ========== 6. NÚMEROS E DEPOIMENTOS ========== -->
     <section class="secao numeros" id="numeros" aria-labelledby="numeros-titulo">
+      <div aria-hidden="true"><span class="confete" style="left:4%;top:8%;transform:rotate(24deg)"></span><span class="confete" style="left:18%;top:3%;transform:rotate(-30deg)"></span><span class="confete" style="left:88%;top:6%;transform:rotate(40deg)"></span><span class="confete" style="left:94%;top:30%;transform:rotate(-12deg)"></span><span class="confete" style="left:7%;top:46%;transform:rotate(60deg)"></span><span class="confete" style="left:96%;top:62%;transform:rotate(15deg)"></span><span class="confete" style="left:3%;top:82%;transform:rotate(-40deg)"></span><span class="confete" style="left:90%;top:90%;transform:rotate(32deg)"></span><span class="confete" style="left:50%;top:2%;transform:rotate(-18deg)"></span></div>
       <div class="container">
         <div class="cabeca">
           <div>
@@ -589,6 +690,7 @@
 
     <!-- ========== 7. BORA CRIAR JUNTOS ========== -->
     <section class="secao contato" id="contato" aria-labelledby="contato-titulo">
+      <svg class="estrela dourada" style="left:3%;bottom:6%;transform:rotate(12deg)" aria-hidden="true"><use href="#estrela"/></svg>
       <div class="container contato-grid">
         <div>
           <p class="rotulo revelar">Bora criar juntos?</p>
@@ -634,6 +736,7 @@
         <a class="marca-nome" href="#inicio">Lara <em>Dam</em></a>
         <ul class="redes" id="redes"></ul>
       </div>
+      <p class="arrobas" id="arrobas"></p>
       <div class="rodape-base">
         <p>© <span id="ano"></span> Lara Dam. Todos os direitos reservados.</p>
         <p>UGC Creator em Caraguá, litoral de São Paulo</p>
@@ -976,6 +1079,7 @@
     <li><a href="${linkInsta}" target="_blank" rel="noopener">Instagram ${esc(contato.instagram)}</a></li>
     <li><a href="${linkWhats(contato.mensagemWhatsapp)}" target="_blank" rel="noopener">WhatsApp</a></li>
     <li><a href="mailto:${esc(contato.email)}">${esc(contato.email)}</a></li>`;
+  $('arrobas').innerHTML = `<span>${esc(contato.instagram)}</span>`.repeat(3);
   $('ano').textContent = new Date().getFullYear();
 
   // Menu fixo: fundo ao rolar e menu-sanduíche no celular
